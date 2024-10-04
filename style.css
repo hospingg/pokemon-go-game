@@ -5,13 +5,15 @@
 html, body {
     padding: 0;
     margin: 0;
+    --light-blue-color: #4a90e2;
+    --light-violet-color: #ded1ff;
 }
 
 body {
     color: black;
     position: relative;
     background: red;
-    background: linear-gradient(45deg, #d2ffde, #ceefff, #ded1ff);
+    background: linear-gradient(45deg, #d2ffde, #ceefff, var(--light-violet-color));
     background-size: cover;
     background-repeat: no-repeat;
     padding: 0;
@@ -57,7 +59,7 @@ body {
 .catch_screen {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(45deg, #d2ffde, #ceefff, #ded1ff);
+    background: linear-gradient(45deg, #d2ffde, #ceefff, var(--light-violet-color));
     position: fixed;
     z-index: 0;
     top: 0;
@@ -107,6 +109,48 @@ body {
     filter: drop-shadow(0px 2px 3px rgba(0, 0, 0, 0.4));
     -webkit-animation: smoosh 0.7s ease infinite;
     animation: smoosh 0.7s ease infinite;
+}
+
+.result-message {
+    min-height: 150px;
+    background: var(--light-blue-color);
+    border-radius: 20px;
+    position: absolute;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 20px;
+    border: 5px solid #ffffff;
+    animation: appear 1s ease-out forwards; 
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    min-width: 700px;
+    z-index: 3;
+    transform: translate(-50%, -70%);
+}
+
+.result {
+    font-size: 36px;
+    color: #fff; /* Білий текст */
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5); /* Ефект тіні для тексту */
+    font-family: 'Poppins', sans-serif; /* Стиль шрифта */
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: #ffee00;
+    font-weight: 800;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Текст з градієнтом */
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
 }
 
 .pokes {
