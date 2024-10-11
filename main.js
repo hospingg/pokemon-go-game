@@ -82,8 +82,13 @@ function random(num) {
 }
 
 function disableButtons() {
-    $btnKick.disabled = true;
-    $btnSpecialKick.disabled = true;
+    $btnKick.classList.add('disabled'); 
+    $btnSpecialKick.classList.add('disabled'); 
+}
+
+function enableButtons() {
+    $btnKick.classList.remove('disabled'); 
+    $btnSpecialKick.classList.remove('disabled'); 
 }
 
 function showResultMessage(resultText) {
@@ -107,27 +112,47 @@ const enemy = new Character('Charmander', 100, document.getElementById('health-e
 
 $btnKick.addEventListener('click', function () {
     character.attack(random(20), enemy, 'common');
-    $btnKick.disabled = true;
-    $btnSpecialKick.disabled = true;
+    disableButtons()
 
     setTimeout(() => {
         enemy.autoAttack(character);
-        $btnKick.disabled = false;
-        $btnSpecialKick.disabled = false;
+        enableButtons()
     }, 1000);
 });
 
 $btnSpecialKick.addEventListener('click', function () {
     character.attack(random(40), enemy, 'special');
-    $btnKick.disabled = true;
-    $btnSpecialKick.disabled = true;
+    disableButtons();
 
     setTimeout(() => {
         enemy.autoAttack(character);
-        $btnKick.disabled = false;
-        $btnSpecialKick.disabled = false;
+        enableButtons();
     }, 1000);
 });
 
 character.renderHP();
 enemy.renderHP();
+
+
+const createClickCounter = (button, limit) => {
+    let count = 0;
+    return () => {
+        if (count < limit) {
+            count++;
+            console.log(`Кнопка натиснута ${count} разів`);
+        }
+
+        if (count >= limit) {
+            button.disabled = true;
+            console.log('Ліміт натискань досягнуто');
+        }
+    };
+};
+
+
+const button1ClickCounter = createClickCounter($btnKick, 6);
+const button2ClickCounter = createClickCounter($btnSpecialKick, 3);
+
+// Додаємо обробники подій для кнопок
+$btnKick.addEventListener('click', button1ClickCounter);
+$btnSpecialKick.addEventListener('click', button2ClickCounter);

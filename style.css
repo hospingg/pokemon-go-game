@@ -44,6 +44,12 @@ body {
     animation: slideIn 0.5s forwards; 
 }
 
+/* button.disabled {
+    background-color: grey;
+    cursor: not-allowed;
+    
+} */
+
 @keyframes slideIn {
     from {
         opacity: 0;
