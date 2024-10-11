@@ -1,3 +1,17 @@
+const logs = [
+    ['згадав щось важливе, але несподівано', "не пам'ятаючи себе від переляку, вдарив у передпліччя ворога."],
+    ["поперхнувся, і за це", "з переляку приклав прямий удар коліном у лоб ворога."],
+    ["забувся, але в цей час нахабний ", ", прийнявши вольове рішення, нечутно підійшовши ззаду, вдарив."],
+    ["прийшов до тями, але несподівано ", " випадково завдав потужного удару."],
+    ["поперхнувся, але в цей час ", " неохоче розтрощив кулаком \"вирізано цензурою\> супротивника."],
+    ["здивувався, а ", " похитнувшись вліпив підлий удар."],
+    ["висморкався, але несподівано ", " провів удар, що дробить."],
+    ["похитнувся, і раптово нахабний ", " так ударив у ногу противника"],
+    ["засмутився, як раптом, несподівано ", " випадково вліпив стопою в живіт суперника."],
+    ["намагався щось сказати, але раптом, несподівано ", " з нудьги, розбив брову супернику."]
+];
+let attackCounter = 0;
+
 class Character {
     constructor(name, defaultHP, elHP, elProgressbar) {
         this.name = name;
@@ -40,11 +54,15 @@ class Character {
         const { currentHP: attackerHP, name: attackerName } = this;
         const { currentHP: defenderHP, name: defenderName } = defender;
 
-        let messageText = `${attackerName} наніс ${damage} шкоди ${defenderName}. Залишилось HP у ${defenderName}: ${Math.max(defenderHP - damage, 0)}. HP у ${attackerName}: ${attackerHP}`;
+        if(attackCounter == logs.length){
+            attackCounter = 0;
+        }
+        let messageText = ` ${defenderName} ${logs[attackCounter][0]} ${attackerName} ${logs[attackCounter][1]} Нанесено  ${damage} шкоди`;
         this.addMessage(messageText, true);
 
         defender.updateHP(damage);
-
+        
+        ++attackCounter;
         if (!defender.isAlive()) {
             messageText = `${defenderName} програв бій!`;
             this.addMessage(messageText);
@@ -76,6 +94,7 @@ class Character {
         }
     }
 }
+
 
 function random(num) {
     return Math.ceil(Math.random() * num);
