@@ -70,7 +70,7 @@ class Character {
             messageBar.append(message);  
         }
 
-        const messagesArr = document.querySelectorAll('#message-bar > *');
+        const messagesArr = [...document.querySelectorAll('#message-bar > *')];
         if (messagesArr.length > 3) {
             messagesArr[messagesArr.length - 1].remove();  
         }
