@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="main.js" type="module" defer></script>
+    <title>Pokemon Fight</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="body">
+    <header>
+        <img class="logo"
+             title="Reset Game"
+             src="./assets/Pokemon_logo.png"
+             alt="Pokemon">
+    </header>
+    <div id="message-bar"></div>
+    
+    <div class="playground">
+        <div class="pokemon character">
+            <span class="lvl">Lv. 1</span>
+
+            <img src="assets/picachu.png" class="sprite" alt="Pokemon"  id='hero'>
+
+            <div class="details">
+                <h2 class="name" id="name-character"></h2>
+                <div class="hp">
+                    <div class="bar">
+                        <div class="health" id="progressbar-character" style="width: 100%;"></div>
+                    </div>
+                    <span class="text" id="health-character">100 / 100</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="control" aria-disabled="true">
+        </div>
+        <div class="control enemy">
+        </div>
+
+        <div class="pokemon enemy">
+            <span class="lvl">Lv. 1</span>
+
+            <img src="assets/charmander.png" class="sprite" alt="Pokemon" id='enemy'>
+
+            <div class="details">
+                <h2 class="name" id="name-enemy">
+                    Charmander
+                </h2>
+                <div class="hp">
+                    <div class="bar">
+                        <div class="health" id="progressbar-enemy" style="width: 100%;"></div>
+                    </div>
+                    <span class="text" id="health-enemy">100 / 100</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="catch_screen">
+    
+</div>
+
+</body>
+</html>
